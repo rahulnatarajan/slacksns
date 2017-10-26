@@ -1,4 +1,4 @@
-<img align="left" src="https://lambci.s3.amazonaws.com/assets/logo-310x310.png" width="180px" height="180px">
+<img align="left" src="https://s3.amazonaws.com/rahultest01/slack.png" width="180px" height="180px">
 
 # CloudWatch Slack Integration using Lambda
 
