@@ -1,6 +1,6 @@
 <img align="left" src="https://s3.amazonaws.com/rahultest01/slack.png" width="180px" height="180px">
 
-# CloudWatch Slack Integration using Lambda
+# CloudWatch Slack Integration using Lambda - CF
 
 *Infrastructure As a Code*
 
