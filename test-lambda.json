@@ -1,0 +1,41 @@
+{
+  
+"Records": [
+    
+	{
+      
+		"EventSource": "aws:sns",
+      
+		"EventVersion": "1.0",
+      
+		"EventSubscriptionArn": "arn:aws:sns:us-east-1:123456789012:lambda_topic:0b6941c3-f04d-4d3e-a66d-b1df00e1e381",
+      
+		"Sns": {
+            
+			"Type": "Notification",
+            
+			"MessageId": "1e245547-b8fd-5ad7-93cb-1bb2b3eeb8ce",
+            
+			"TopicArn": "arn:aws:sns:us-east-1:269395967663:slackdemo",
+            
+			"Subject": "ALARM: \"awsec2-i-3c0f868d-CPU-Utilization\" in US - N. Virginia",
+            
+			"Message": "{\"AlarmName\":\"awsec2-i-3c0f868d-CPU-Utilization\",\"AlarmDescription\":\"Created from EC2 Console\",\"AWSAccountId\":\"269395967663\",\"NewStateValue\":\"ALARM\",\"NewStateReason\":\"Threshold Crossed: 1 datapoint (1.182) was greater than or equal to the threshold (1.0).\",\"StateChangeTime\":\"2015-12-23T20:49:23.743+0000\",\"Region\":\"US - N. Virginia\",\"OldStateValue\":\"OK\",\"Trigger\":{\"MetricName\":\"CPUUtilization\",\"Namespace\":\"AWS/EC2\",\"Statistic\":\"AVERAGE\",\"Unit\":null,\"Dimensions\":[{\"name\":\"InstanceId\",\"value\":\"i-3c0f868d\"}],\"Period\":300,\"EvaluationPeriods\":1,\"ComparisonOperator\":\"GreaterThanOrEqualToThreshold\",\"Threshold\":1.0}}",
+            
+			"Timestamp": "2015-12-23T20:49:23.872Z",
+            
+			"SignatureVersion": "1",
+            
+			"Signature": "DF/95iGOH+4j/I6cSlBqb9Lb20/1WSJdxdZ8Kwr9ikXMm3Cu030yYgc1mr1PfcX4+cypit3J5lwNbiwcIFZvTCZ3f6z6pKA7XS75uFB4BE5f6MBoQsj2HItVf8+44yt9HbETdG/Tp90L5bc91rCwYzeRPy0hNyl75kbhg115Ohp/be8BIJ5zbu1fo4/yy80Sv6fHBSuFgwNk7Lf8I4tZDeeMZ4EaDm0KnIN/ckT7yK3f/oGZDYTvkhw95XcxISjPSl8BBlKPfZX3vA4rKPHZ7TIwhMeRhyupw+RKlqyVWH9dAQji2UVuWKVA091y2DwrM4NaAVGb/B+JuO14xbngsA==",
+            
+			"SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-bb750dd426d95ee9390147a5624348ee.pem",
+            
+			"UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:269395967663:slackdemo:0c3e1176-b691-49a6-9a0b-8c2e3b2b8f6c"
+        
+			}
+    
+	}
+  
+    ]
+
+}

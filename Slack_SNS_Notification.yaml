@@ -1,0 +1,114 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: "Slack Bot Template"
+Parameters: 
+  slacktoken: 
+    Type: String
+Resources:
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+            - lambda.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      Path: "/"
+      Policies:
+      - PolicyName: BasicLambdaExecutionPolicy
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Effect: Allow
+            Action:
+            - logs:*
+            Resource: arn:aws:logs:*:*:*
+  ChatBot:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      FunctionName: Slackbot
+      Code:
+        ZipFile: |
+          console.log('Loading function');
+
+          const https = require('https');
+          const url = require('url');
+          const slack_url = 'https://hooks.slack.com/services/!Ref 'slacktoken'';
+          const slack_req_opts = url.parse(slack_url);
+          slack_req_opts.method = 'POST';
+          slack_req_opts.headers = {
+              'Content-Type': 'application/json'
+          };
+
+          exports.handler = function(event, context) {
+              (event.Records || []).forEach(function(rec) {
+                  if (rec.Sns) {
+                      var req = https.request(slack_req_opts, function(res) {
+                          if (res.statusCode === 200) {
+                              context.succeed('posted to slack');
+                          } else {
+                              context.fail('status code: ' + res.statusCode);
+                          }
+                      });
+
+                      req.on('error', function(e) {
+                          console.log('problem with request: ' + e.message);
+                          context.fail(e.message);
+                      });
+
+                      var text_msg = JSON.stringify(rec.Sns.Message, null, '  ');
+                      try {
+                          var msg_data = [];
+                          var parsed = JSON.parse(rec.Sns.Message);
+                          for (var key in parsed) {
+                              msg_data.push(key + ': ' + parsed[key]);
+                          }
+                          text_msg = msg_data.join("\n");
+                      } catch (e) {
+                          console.log(e);
+                      }
+
+                      var params = {
+                          attachments: [{
+                              fallback: text_msg,
+                              pretext: rec.Sns.Subject,
+                              color: "#D00000",
+                              fields: [{
+                                  "value": text_msg,
+                                  "short": false
+                              }]
+                          }]
+                      };
+                      req.write(JSON.stringify(params));
+
+                      req.end();
+                  }
+              });
+          };
+      Runtime: nodejs4.3
+  SBSNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: Slackbot
+      DisplayName: Slackbot
+      Subscription: 
+      - 
+        Endpoint: 
+          Fn::GetAtt: 
+            - "ChatBot"
+            - "Arn"
+        Protocol: "lambda"
+  SNSLambdaPermission: 
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction 
+      Principal: sns.amazonaws.com 
+      SourceArn:
+        Ref: SBSNSTopic 
+      FunctionName: !GetAtt ChatBot.Arn
+
