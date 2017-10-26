@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: "Slack Bot Template"
+Description: "Slack Bot Template v1"
 Parameters: 
   slacktoken: 
     Type: String
