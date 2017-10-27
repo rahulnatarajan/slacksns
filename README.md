@@ -30,7 +30,7 @@ Step 4: You will find the application site of Slack. Type “incoming” in the 
 Step 5: Install the app in your respective Team.
 Step 6: Select the channel and click on Add Incoming Webhook
 
-### What does the Lambda function do?
+## What does the Lambda function do?
 
   1. Receives notification from CloudWatch (via SNS)
   2. Formats the incoming JSON message from CloudWatch
