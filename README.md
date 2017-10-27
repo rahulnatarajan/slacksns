@@ -23,12 +23,12 @@ Clicking on the Launch Stack button will launch the Cloudformation template in y
 
 ## Create a Slack Incoming Webhook URL
 
-Step 1: Go to your slack channel
-Step 2: Click on your team name
-Step 3: You will find a popup Menu, click on App and Custom Integration
-Step 4: You will find the application site of Slack. Type “incoming” in the search box and select the Incoming Webhooks.
-Step 5: Install the app in your respective Team.
-Step 6: Select the channel and click on Add Incoming Webhook
+  Step 1: Go to your slack channel
+  Step 2: Click on your team name
+  Step 3: You will find a popup Menu, click on App and Custom Integration
+  Step 4: You will find the application site of Slack. Type “incoming” in the search box and select the Incoming Webhooks
+  Step 5: Install the app in your respective Team
+  Step 6: Select the channel and click on Add Incoming Webhook
 
 ## What does the Lambda function do?
 
