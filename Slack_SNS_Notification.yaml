@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: "Slack Bot Template v1"
+Description: "Slack Bot Template"
 Parameters: 
   slacktoken: 
     Type: String
@@ -111,4 +111,13 @@ Resources:
       SourceArn:
         Ref: SBSNSTopic 
       FunctionName: !GetAtt ChatBot.Arn
-
+Outputs:
+    IAMRoleARN:
+        Description: "IAM Role ARN"
+        Value: !GetAtt LambdaExecutionRole.Arn
+    SNSTopicARN:
+        Description: "SNS Topic Name"
+        Value: !GetAtt SBSNSTopic.TopicName
+    LambdaARN:
+        Description: "Lambda ARN"
+        Value: !GetAtt ChatBot.Arn
