@@ -21,13 +21,20 @@ Clicking on the Launch Stack button will launch the Cloudformation template in y
 * A Slack API token
 
 
-## Create a Slack token
+## Create a Slack Incoming Webhook URL
 
-You can obtain a Slack API token by creating a bot user (or you can use the token from an existing bot user if you have one) – [this direct link](https://slack.com/apps/new/A0F7YS25R-bots) should take you there, but you can navigate from the [App Directory](https://slack.com/apps) via `Browse Apps > Custom Integrations > Bots`.
+Step 1: Go to your slack channel
+Step 2: Click on your team name
+Step 3: You will find a popup Menu, click on App and Custom Integration
+Step 4: You will find the application site of Slack. Type “incoming” in the search box and select the Incoming Webhooks.
+Step 5: Install the app in your respective Team.
+Step 6: Select the channel and click on Add Incoming Webhook
 
-Pick any name, and when you click "Add integration" Slack will generate an API token that looks something like `xoxb-<numbers>-<letters>`
+### What does the Lambda function do?
 
-![Add Slack bot](https://lambci.s3.amazonaws.com/assets/slack_bot.png)
+  1. Receives notification from CloudWatch (via SNS)
+  2. Formats the incoming JSON message from CloudWatch
+  3. Puts the message in the Slack channel using the webhook
 
 
 ## License
