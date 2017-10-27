@@ -18,7 +18,7 @@ Clicking on the Launch Stack button will launch the Cloudformation template in y
 ## Prerequisites
 
 * An [Amazon AWS account](https://portal.aws.amazon.com/gp/aws/developer/registration/index.html)
-* A Slack API token
+* Slack Webhook URL
 
 
 ## Create a Slack Incoming Webhook URL
