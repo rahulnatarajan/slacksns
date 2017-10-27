@@ -21,6 +21,15 @@ Clicking on the Launch Stack button will launch the Cloudformation template in y
 * Slack Webhook URL
 
 
+## Template Parameters
+
+When you launch the template, you'll be asked to key in your Slack channel's Webhook URL. Do not paste the entire URL, paste only the long string at the end of the URL as shown in the screenshot below. 
+
+If your webhook URL is this : https://hooks.slack.com/services/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
+
+Then type T32CMHG0Z/B89R4SVFD/NcZBzylap5BDhL1cgoFQ8ReJ as the slack token input while launching the CF template. 
+
+
 ## Create a Slack Incoming Webhook URL
 
   1. Go to your slack channel
