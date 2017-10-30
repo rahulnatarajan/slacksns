@@ -3,6 +3,9 @@ Description: "Slack Bot Template - Written By Rahul Natarajan"
 Parameters: 
   slacktoken: 
     Type: String
+  emailadd:
+    Type: String
+    Description: "Please enter an e-mail address"
 Resources:
   LambdaExecutionRole:
     Type: AWS::IAM::Role
@@ -111,6 +114,12 @@ Resources:
       SourceArn:
         Ref: SBSNSTopic 
       FunctionName: !GetAtt ChatBot.Arn
+  MySubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Endpoint: !Ref 'emailadd'
+      Protocol: email
+      TopicArn: !Ref 'SBSNSTopic'
 Outputs:
     IAMRoleARN:
         Description: "IAM Role ARN"
