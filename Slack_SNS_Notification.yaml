@@ -115,7 +115,7 @@ Outputs:
     IAMRoleARN:
         Description: "IAM Role ARN"
         Value: !GetAtt LambdaExecutionRole.Arn
-    SNSTopicARN:
+    SNSTopicName:
         Description: "SNS Topic Name"
         Value: !GetAtt SBSNSTopic.TopicName
     LambdaARN:
